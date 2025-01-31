@@ -3,6 +3,7 @@ import { askQuery } from './src/controllers/chat.controller';
 import express from 'express';
 const app = express();
 import routes from './src/routes/api';
+
 import auth from "./src/routes/auth"
 import { AppDataSource } from './src/config/data-source';
 import { DataSource } from 'typeorm';
@@ -11,6 +12,10 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerOptions from './swagger';
 import chat from './src/routes/chat'
 import cors from "cors";
+import certificate from './src/routes/certificate';
+
+// import certificate './src.routes/certificate'
+
 
 
 // Middleware setup
@@ -29,6 +34,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Routes setup
 app.use('/api/auth', auth)
 app.use('/api/chat', chat)
+app.use('/api/certificate',certificate)
 
 
 // Start server
