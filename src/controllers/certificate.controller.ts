@@ -7,11 +7,9 @@ import { UserInfo } from "../entity/user.entity";
 import { extractArrayCertificate } from "../utils/extractArrayCertificate"
 import { Milestone } from "../entity/milestone.entity";
 import { Certificate } from "../entity/certificate.entity";
-
-
 export const certificate = async (req: Request, res: Response) => {
     const { userId , coursename } = req.body;
-    const roadmapRepo = AppDataSource.getRepository(Roadmap);
+    const certificateRepo = AppDataSource.getRepository(Certificate);
     const milestoneRepo = AppDataSource.getRepository(Milestone);
     const userRepo =  AppDataSource.getRepository(UserInfo);
 
@@ -26,7 +24,7 @@ export const certificate = async (req: Request, res: Response) => {
         const certificate = new Certificate()
         certificate.user = userId
         certificate.courseName = coursename
-       await roadmapRepo.save(certificate)
+       await certificateRepo.save(certificate)
      
         const qury =`
 
